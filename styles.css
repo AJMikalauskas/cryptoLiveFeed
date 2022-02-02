@@ -1,0 +1,95 @@
+/* Body Bg and Other Changes */
+body
+{
+    background-color: #FFEEAD;
+}
+
+
+#xrpMoney {
+    /* width: 300px;
+    float: left;
+    height: 100px;  */
+    text-align: center;
+    background-color: #FFAD60;
+    padding-bottom: 10px;
+}
+
+
+
+#decentralandMoney {
+    /* margin-top: 1px;
+    width: 300px;
+    float: left;
+    height: 100px;  */
+    text-align: center;
+    background-color: #FFAD60;
+    padding-bottom: 10px;
+}
+
+
+#ethereumMoney {
+    /* margin-top: 2px;
+    width: 300px;
+    float: left;
+    height: 100px;  */
+    text-align: center;
+    background-color: #FFAD60;
+    padding-bottom: 10px;
+}
+/* 
+.outer-wrapper {
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-100vh);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+} */
+
+/* Makes Scrolling Bar Disappear at the top */
+/* ::-webkit-scrollbar {
+    display:none;
+} */
+
+/* .navbar
+{
+    background-color: #072227;
+} */
+#wrapperOfCarousel {
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: url("technoBg.jpg");
+    background-size: cover;
+}
+
+.carousel {
+    display: inline-block;
+    width: 700px;
+    /* margin-top: 10px; */
+    padding: 3px;
+}
+.navbar {
+    text-align: center;
+    background-color: #96CEB4;
+}
+.centered-items {
+    /* text-align: center; */
+    align-content: center;
+    width: 500px;
+    height:auto;
+}
+
+#cryptoText 
+{
+    color: #AEFEFF;
+    /* margin-left: 100px; */
+    /* display: inline; */
+    /* text-align: center; */
+}
+
+.cryptoPicture
+{
+    margin-top: 10px;
+}
