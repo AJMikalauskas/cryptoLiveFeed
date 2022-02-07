@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js">
+    </script>
+    <link rel="stylesheet" href="cryptoSpecific.css">
+</head>
+
+<body>
+    <h1>Ticker Symbol of Crypto</h1>
+
+    <div class="w-100" id="cryptoSpecified">
+        <img src="" id="cryptoPicture" alt="cryptoSelected" height="80" style="margin-bottom: 10px;">
+        <!-- <b>
+            <p>Ripple current price:
+        </b> -->
+        <br>
+        <b><span id="cryptoNameBold"></span></b>
+        <span id="currentPriceOfSelectedCrypto">current price</span>
+        <br>
+
+
+        <b><span> Amount We Have:</span></b>
+        <span id="amtOfCryptoOwned">Amount of this crypto we have</span>
+        <br>
+
+        <b><span>Total Money We Have In This Crypto:</span></b>
+        <span id="totalCryptoToUsd">total usd we have in this crypto</span>
+        <br>
+
+        <b><span>Rank:</span></b>
+        <span id="marketCapRankOfCrypto">market cap rank of this crypto</span>
+        <br>
+
+        <b><span>Market Cap:</span></b>
+        <span id="marketCapOfCrypto">market cap of this crypto</span>
+        <br>
+
+        <br><button onclick= "creatingALineChartForSpecificCrypto()">Create Graph</button>
+
+
+    </div>
+
+    <!-- onmouseover="displayDataOfPointAtHoverLocation()  ;max-width:680px -->
+    <canvas id="canvas" style="width:75%;max-width:680px"></canvas>
+</body>
+<script src="cryptoSpecifics.js"></script>
+
+</html>

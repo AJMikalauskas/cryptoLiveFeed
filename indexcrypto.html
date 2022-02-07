@@ -54,76 +54,81 @@
     <div id="wrapperOfCarousel">
         <!-- Bootstrap version 5 Carousel -->
         <!-- class="carousel slide" data-bs-ride="carousel" -->
-        <div id="carouselExampleInterval" class="carousel">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="2500">
-                    <div class="w-100" id="xrpMoney">
-                        <img src="xrpPicture.png" class="cryptoPicture" alt="XRP" height="80"
-                            style="margin-bottom: 10px;">
-                        <!-- <b>
+                    <a id="cursorPointer" onclick="goToNewPage('ripple')">
+                        <div class="w-100" id="xrpMoney">
+                            <img src="xrpPicture.png" class="cryptoPicture" alt="XRP" height="80"
+                                style="margin-bottom: 10px;">
+                            <!-- <b>
                             <p>Ripple current price:
                         </b> -->
-                        <br>
-                        <b><span> XRP </span></b>
-                        <span id="currentPriceOfripple">current price</span>
-                        <br>
+                            <br>
+                            <b><span> XRP </span></b>
+                            <span id="currentPriceOfripple">current price</span>
+                            <br>
 
 
-                        <b><span> Amount We Have:</span></b>
-                        <span id="numberOfripple">number of xrp we have</span>
-                        <br>
+                            <b><span> Amount We Have:</span></b>
+                            <span id="numberOfripple">number of xrp we have</span>
+                            <br>
 
-                        <b><span>Total Money We Have In This Crypto:</span></b>
-                        <span id="totalrippleToUsd">total usd we have in xrp</span>
+                            <b><span>Total Money We Have In This Crypto:</span></b>
+                            <span id="totalrippleToUsd">total usd we have in xrp</span>
 
-
-                    </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="carousel-item" data-bs-interval="2500">
-                    <div id="decentralandMoney">
-                        <img src="https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745"
-                            class="cryptoPicture" alt="decentraland" height="80" style="margin-bottom: 10px;">
-                        <!-- <b>
+                    <a id="cursorPointer" onclick="goToNewPage('decentraland')">
+                        <div id="decentralandMoney">
+                            <img src="https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745"
+                                class="cryptoPicture" alt="decentraland" height="80" style="margin-bottom: 10px;">
+                            <!-- <b>
                             <p>Decentraland current price:
                         </b> -->
 
-                        <br>
-                        <b><span>MANA</span></b>
-                        <span id="currentPriceOfdecentraland">current price</span>
-                        <br>
+                            <br>
+                            <b><span>MANA</span></b>
+                            <span id="currentPriceOfdecentraland">current price</span>
+                            <br>
 
-                        <b><span>Amount We Have:</span></b>
-                        <span id="numberOfdecentraland">number of MANA we have</span>
-                        <br>
+                            <b><span>Amount We Have:</span></b>
+                            <span id="numberOfdecentraland">number of MANA we have</span>
+                            <br>
 
-                        <b><span>Total Money We Have In This Crypto:</span></b>
-                        <span id="totaldecentralandToUsd">total usd we have in xrp</span>
+                            <b><span>Total Money We Have In This Crypto:</span></b>
+                            <span id="totaldecentralandToUsd">total usd we have in xrp</span>
 
-                    </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="carousel-item" data-bs-interval="2500">
-                    <div id="ethereumMoney">
-                        <img src="ethPicture.png" class="cryptoPicture" alt="ethereum" height="80"
-                            style="margin-bottom: 10px;">
-                        <!-- <b>
+                    <a id="cursorPointer" onclick="goToNewPage('ethereum')">
+                        <div id="ethereumMoney">
+                            <img src="ethPicture.png" class="cryptoPicture" alt="ethereum" height="80"
+                                style="margin-bottom: 10px;">
+                            <!-- <b>
                             <p>Ethereum current price:
                         </b> -->
-                        <br>
-                        <b><span>ETH</span></b>
-                        <span id="currentPriceOfethereum">current price</span>
-                        <br>
+                            <br>
+                            <b><span>ETH</span></b>
+                            <span id="currentPriceOfethereum">current price</span>
+                            <br>
 
-                        <b><span>Amount We Have:</span></b>
-                        <span id="numberOfethereum">number of MANA we have</span>
-                        <br>
+                            <b><span>Amount We Have:</span></b>
+                            <span id="numberOfethereum">number of MANA we have</span>
+                            <br>
 
-                        <b><span>Total Money We Have In This Crypto:</span></b>
-                        <span id="totalethereumToUsd">total usd we have in xrp</span>
+                            <b><span>Total Money We Have In This Crypto:</span></b>
+                            <span id="totalethereumToUsd">total usd we have in xrp</span>
 
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -132,15 +137,48 @@
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> -->
         </div>
     </div>
-</div>
+    </div>
 
 
-    <!-- <div>
-        <button id="newPage" onclick="goToNewPage()">New Page Link</button>
-    </div> -->
+    <div class="container" id="tableBelowMain">
+        <h1 id="tableHeader">Cryptos By Market Price </h1>
+        <table id="adjustingTable" class="table ">
+            <thead  id="thead">
+                <tr>
+                  <th scope="col">Coin</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">24h Change</th>
+                  <th scope="col">Market Cap</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+            <button onclick="adjustTable()">Adjust Table Btn</button>
+        <!-- <button id="newPage" onclick="goToNewPage()">New Page Link</button> -->
+        <!-- <a id="queryParamLink" href="/cryptoSpecific.html"> <button> Link to another page </button></a> -->
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

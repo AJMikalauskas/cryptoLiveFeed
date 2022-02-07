@@ -1,7 +1,7 @@
 /* Body Bg and Other Changes */
 body
 {
-    background-color: #FFEEAD;
+    background-color: #2C3333;
 }
 
 
@@ -10,8 +10,13 @@ body
     float: left;
     height: 100px;  */
     text-align: center;
-    background-color: #FFAD60;
+    background-color: #1A374D;
     padding-bottom: 10px;
+    opacity: 90%;
+}
+
+#xrpMoney span {
+    color: #F5F2E7;
 }
 
 
@@ -22,9 +27,15 @@ body
     float: left;
     height: 100px;  */
     text-align: center;
-    background-color: #FFAD60;
+    background-color: #1A374D;
     padding-bottom: 10px;
+    opacity: 90%;
 }
+
+#decentralandMoney span {
+    color: #F5F2E7;
+}
+
 
 
 #ethereumMoney {
@@ -33,9 +44,15 @@ body
     float: left;
     height: 100px;  */
     text-align: center;
-    background-color: #FFAD60;
+    background-color: #1A374D;
     padding-bottom: 10px;
+    opacity: 90%;
 }
+
+#ethereumMoney span {
+    color: #F5F2E7;
+}
+
 /* 
 .outer-wrapper {
     width: 100vh;
@@ -60,7 +77,7 @@ body
     text-align: center;
     padding-top: 100px;
     padding-bottom: 100px;
-    background-image: url("technoBg.jpg");
+    background-image: url("technoBg2.jpg");
     background-size: cover;
 }
 
@@ -72,7 +89,7 @@ body
 }
 .navbar {
     text-align: center;
-    background-color: #96CEB4;
+    background-color: #395B64;
 }
 .centered-items {
     /* text-align: center; */
@@ -93,3 +110,67 @@ body
 {
     margin-top: 10px;
 }
+
+#cursorPointer 
+{
+    cursor: pointer;
+}
+
+#tableHeader 
+{
+    text-align: center;
+    padding-bottom: 25px;
+    color: #AEFEFF;
+}
+
+#tableBelowMain 
+{
+    margin-top: 25px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 350px;
+  }
+  table tr th,
+  table tr td {
+    border-right: 1px solid #2C3333;
+    border-bottom: 1px solid #2C3333;
+    padding: 5px;
+  }
+  table tr th:first-child,
+  table tr td:first-child {
+    border-left: 1px solid #2C3333;
+  }
+  table tr th {
+    background: #eee;
+    border-top: 1px solid #2C3333;
+    text-align: left;
+  }
+  
+  /* top-left border-radius */
+  table tr:first-child th:first-child {
+    border-top-left-radius: 6px;
+  }
+  
+  /* top-right border-radius */
+  table tr:first-child th:last-child {
+    border-top-right-radius: 6px;
+  }
+  
+  /* bottom-left border-radius */
+  table tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+  }
+  
+  /* bottom-right border-radius */
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+  }
+
+  #thead 
+  {
+      background-color: #AEFEFF;
+      /* color: white; */
+  }
