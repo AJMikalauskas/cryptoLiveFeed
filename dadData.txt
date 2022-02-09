@@ -1,0 +1,5 @@
+{
+"decentraland": 100,
+"ripple": 100,
+"ethereum": 100
+}

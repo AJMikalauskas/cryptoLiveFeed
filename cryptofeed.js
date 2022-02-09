@@ -15,7 +15,8 @@ var keyNames;
 var keyValues;
 
 // xmlHTTPRequest variables
-var getRqstUrl = "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&ids=";
+var getRqstUrl =
+  "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&ids=";
 var symbolUrl = "https://coingecko.p.rapidapi.com/coins/";
 const data = null;
 
@@ -34,6 +35,7 @@ function getCryptoPrice(arrWithObjElements) {
     if (this.readyState === this.DONE) {
       console.log(this.responseText);
       jsnCnvrtr = JSON.parse(this.responseText);
+      //console.log(jsnCnvrtr[0])
       //   console.log(jsnCnvrtr);
       //   console.log(jsnCnvrtr.ripple.usd);
 
@@ -42,16 +44,16 @@ function getCryptoPrice(arrWithObjElements) {
 
       //console.log(jsnCnvrtr[0]["current_price"]);
 
-
       /* Edit Carousel Elements */
       for (
         var cryptoSelected = 0;
         cryptoSelected < keyNames.length;
         cryptoSelected++
       ) {
-        var cnvrtToStringVal = +
-          jsnCnvrtr[cryptoSelected]["current_price"].toString();
-          //["ripple"/"decentraland"/"ethereum"]["usd"]
+        console.log(jsnCnvrtr[cryptoSelected]);
+        var cnvrtToStringVal =
+          +jsnCnvrtr[cryptoSelected]["current_price"].toString();
+        //["ripple"/"decentraland"/"ethereum"]["usd"]
 
         var withDollarSign = "$" + cnvrtToStringVal;
         document.getElementById(
@@ -63,13 +65,54 @@ function getCryptoPrice(arrWithObjElements) {
         ).innerHTML = arrWithObjElements[jsnCnvrtr[cryptoSelected]["id"]];
 
         var tokenToUsdConversion =
-          "$" + arrWithObjElements[jsnCnvrtr[cryptoSelected]["id"]] * cnvrtToStringVal;
+          "$" +
+          arrWithObjElements[jsnCnvrtr[cryptoSelected]["id"]] *
+            cnvrtToStringVal;
         document.getElementById(
           "total" + jsnCnvrtr[cryptoSelected]["id"] + "ToUsd"
         ).innerHTML = tokenToUsdConversion;
       }
 
-      
+      /* Table DOM Manipulation*/
+
+      for (var i = 0; i < keyNames.length; i++) {
+        // //console.log(document.getElementById('adjustingTable').rows)
+        var x = document.getElementById("adjustingTable").rows[i + 1].cells;
+        var imageOfCrypto = document.createElement("img");
+        imageOfCrypto.height = "60";
+        imageOfCrypto.style.paddingRight = "15px";
+        imageOfCrypto.style.marginBottom = "10px";
+        imageOfCrypto.src = jsnCnvrtr[i]["symbol"] + "Picture.png";
+        x[0].appendChild(imageOfCrypto);
+
+        var symbolCapitalized = document.createElement("span");
+        symbolCapitalized.innerHTML = jsnCnvrtr[i]["symbol"].toUpperCase();
+        symbolCapitalized.style.fontWeight = "bold";
+        symbolCapitalized.style.paddingRight = "15px";
+        x[0].appendChild(symbolCapitalized);
+
+        var CrrntCrypto = document.createElement("span");
+        CrrntCrypto.innerHTML = jsnCnvrtr[i]["name"];
+        x[0].appendChild(CrrntCrypto);
+        console.log(keyNames[i]);
+        x[1].innerHTML = jsnCnvrtr[i]["current_price"].toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        });
+
+        if (jsnCnvrtr[i]["price_change_percentage_24h"].toFixed(2) > 0) {
+          x[2].style.color = "green";
+          x[2].innerHTML =
+            "+" + jsnCnvrtr[i]["price_change_percentage_24h"].toFixed(2) + "%";
+        } else {
+          x[2].style.color = "red";
+          x[2].innerHTML =
+            jsnCnvrtr[i]["price_change_percentage_24h"].toFixed(2) + "%";
+        }
+        var mktCap = "$ " + jsnCnvrtr[i]["market_cap"].toLocaleString();
+        x[3].innerHTML = mktCap;
+        //x[].innerHTML= "numbers";
+      }
     }
   });
 
@@ -80,11 +123,11 @@ function getCryptoPrice(arrWithObjElements) {
   keyNames = Object.keys(arrWithObjElements);
   console.log(keyNames);
   for (var cryptoNum = 0; cryptoNum < keyNames.length; cryptoNum++) {
-    if (cryptoNum == keyNames.length - 1) {
-      getRqstUrl += keyNames[cryptoNum];
+    if (cryptoNum < keyNames.length - 1) {
+      getRqstUrl += keyNames[cryptoNum] + "%2C";
       console.log(getRqstUrl);
     } else {
-      getRqstUrl += keyNames[cryptoNum] + "%2C";
+      getRqstUrl += keyNames[cryptoNum];
       console.log(getRqstUrl);
     }
   }
@@ -98,11 +141,11 @@ function getCryptoPrice(arrWithObjElements) {
 
   xhr.send(data);
 
-//   xhrCall2.open("GET", "https://coingecko.p.rapidapi.com/coins/ripple?localization=false");
-// xhr.setRequestHeader("x-rapidapi-host", "coingecko.p.rapidapi.com");
-// xhr.setRequestHeader("x-rapidapi-key", "93da5c882bmshca883f546251ac6p1f0c49jsn63020d879234");
+  //   xhrCall2.open("GET", "https://coingecko.p.rapidapi.com/coins/ripple?localization=false");
+  // xhr.setRequestHeader("x-rapidapi-host", "coingecko.p.rapidapi.com");
+  // xhr.setRequestHeader("x-rapidapi-key", "93da5c882bmshca883f546251ac6p1f0c49jsn63020d879234");
 
-// xhr.send(data);
+  // xhr.send(data);
 }
 
 // function showCryptoPriceToDoc() {
@@ -136,18 +179,69 @@ function getCryptoPrice(arrWithObjElements) {
 //     //console.log(data);
 // }
 
+// function readTextFile(file)
+// {
+//   const fs = require('fs');
+
+// fs.readFile(file, (err, data) => {
+//   if (err) throw err;
+
+//   console.log(data.toString());
+// })
+  // console.log(file);
+  //   var rawFile = new XMLHttpRequest();
+  //   rawFile.open("GET", file, false);
+  //   rawFile.onreadystatechange = function ()
+  //   {
+  //       if(rawFile.readyState === 4)
+  //       {
+  //           if(rawFile.status === 200 || rawFile.status == 0)
+  //           {
+  //               var allText = rawFile.responseText;
+  //               console.log(allText);
+  //           }
+  //       }
+  //   }
+  //   rawFile.send(null);
+//}
 var numcnvrtr;
 var stringExample = '{"decentraland": 35,"ripple": 50,"ethereum": 1}';
+// window.onload = function changeCryptoAmts(fileToData)
+// {
+//   if(fileToData != undefined)
+//   {
+//     stringExample = fileToData;
+//   }
+  
+// }
+var createdFile;
 //document.querySelector("#read-button").addEventListener("click",
-window.onload = function getFileInfo(event) {
+//window.onload = 
+function getFileInfo() {
   //let file = document.querySelector("#file-input").files[0];
   //let file = event.target.files[0];
 
-  var createdFile = new File(
-    [stringExample],
-    "C:\\Users\\ajmik\\OneDrive\\Desktop\\Xander's Small Coding Projects 2022\\cryptoFeedTest2\\cryptoData.txt"
-  );
-  console.log(createdFile);
+  // if(newUser == undefined)
+  // {
+    // if(createdFile != null)
+    // {
+    //   createdFile = fileName;
+    // }
+    // else
+    // {
+      createdFile = new File(
+        [stringExample],
+        "C:\\Users\\ajmik\\OneDrive\\Desktop\\Xander's Small Coding Projects 2022\\cryptoLiveFeed\\cryptoData.txt"
+      );
+      console.log(createdFile);
+    //}
+    // newUser = "newUser";
+  // }
+  // else 
+  // {
+  //   readText("C:\\Users\\ajmik\\OneDrive\\Desktop\\Xander's Small Coding Projects 2022\\cryptoLiveFeed\\dadData.txt");
+  //   //createdFile = File("C:\\Users\\ajmik\\OneDrive\\Desktop\\Xander's Small Coding Projects 2022\\cryptoFeedTest2\\cryptoData.txt")
+  // }
 
   //console.log(file.name);
   let reader = new FileReader();
@@ -159,10 +253,10 @@ window.onload = function getFileInfo(event) {
     console.log(jsnCnvrtr2);
     console.log(jsnCnvrtr2["decentraland"]);
 
-    // keyNames = Object.keys(jsnCnvrtr2);
-    // console.log(keyNames);
-    // keyValues = Object.values(jsnCnvrtr2);
-    // console.log(keyValues);
+    keyNames = Object.keys(jsnCnvrtr2);
+    console.log(keyNames);
+    keyValues = Object.values(jsnCnvrtr2);
+    console.log(keyValues);
     //var entries = Object.entries(jsnCnvrtr2);
     //console.log(entries);
 
@@ -173,7 +267,7 @@ window.onload = function getFileInfo(event) {
   };
   reader.readAsText(createdFile);
 };
-
+getFileInfo();
 function goToNewPage(nameOfCryptoSelected) {
   // window.location.href = "http://127.0.0.1:5500/indexcrypto.html/cryptoSpecific.html"
   // var url1 = new URL('/page', "http://127.0.0.1:5500/indexcrypto.html");
@@ -182,12 +276,10 @@ function goToNewPage(nameOfCryptoSelected) {
   var url1 = new URL("http://127.0.0.1:5500/cryptoSpecific.html");
   url1.searchParams.set("cryptoName", nameOfCryptoSelected);
 
-  for(var cryptoFinder = 0; cryptoFinder < keyNames.length; cryptoFinder++)
-  {
-  if(keyNames[cryptoFinder] == nameOfCryptoSelected)
-  {
-    url1.searchParams.set("cryptoAmt", keyValues[cryptoFinder]) 
-  }
+  for (var cryptoFinder = 0; cryptoFinder < keyNames.length; cryptoFinder++) {
+    if (keyNames[cryptoFinder] == nameOfCryptoSelected) {
+      url1.searchParams.set("cryptoAmt", keyValues[cryptoFinder]);
+    }
   }
 
   console.log(url1);
@@ -201,10 +293,53 @@ function goToNewPage(nameOfCryptoSelected) {
 }
 //goToNewPage();
 
+// function adjustTable()
+// {
+//   console.log(document.getElementById('adjustingTable').rows)
+//   var x = document.getElementById('adjustingTable').rows[0].cells;
+//   x[0].innerHTML= "numbers";
+// }
 
-function adjustTable()
-{
-  console.log(document.getElementById('adjustingTable').rows)
-  var x = document.getElementById('adjustingTable').rows[0].cells;
-  x[0].innerHTML= "numbers";
+function searchForCryptos() {
+  var input = document.getElementById("myInput");
+  var filter = input.value.toUpperCase();
+  var tableElement = document.getElementById("adjustingTable");
+  // Grabs each row and uses for loop to go through each row and selects first td element which has the crypto name
+  var tableRowElements = tableElement.getElementsByTagName("tr");
+  for (
+    var cryptoSearch = 1;
+    cryptoSearch < tableRowElements.length;
+    cryptoSearch++
+  ) {
+    var td = tableRowElements[cryptoSearch].getElementsByTagName("td")[0];
+    var spanElements = td.getElementsByTagName("span")[1].innerText;
+    if (td) {
+      var txtValue = spanElements;
+      if (txtValue.toUpperCase().indexOf(filter) == -1) {
+        // tableRowElements[cryptoSearch].style.display = "";
+        tableRowElements[cryptoSearch].style.display = "none";
+      } else {
+        tableRowElements[cryptoSearch].style.display = "";
+      }
+    }
+    console.log(td.getElementsByTagName("span")[1].innerText);
+  }
+  //console.log(tableRowElement);
 }
+
+// function readInNewFileData(file)
+// {
+//   var newFile =  new File([],file);
+//   //newFile.name = file;
+//   //document.querySelector("#read-button").addEventListener('click', function() {
+// 		//let file = document.querySelector("#file-input").files[0];
+// 		let reader = new FileReader();
+// 		reader.addEventListener('load', function(e) {
+// 	    		let text = e.target.result;
+// 	    		console.log(text);
+// 		});
+// 		reader.readAsText(newFile);
+// //	};
+//   //);
+
+// }

@@ -1,4 +1,29 @@
-#myChart
+body
 {
-    background-color: black;
+    text-align: center;
+    background-color: rgb(161, 173, 231);
 }
+#canvas
+{
+    background-color: white;
+}
+
+.navbar {
+    text-align: center;
+    background-color: #395B64;
+}
+
+#cryptoSpecified
+{
+    margin-bottom: 100px;
+}
+
+#canvas-container
+{
+    width: 100%;
+    text-align:center;
+}
+/* canvas 
+{
+    display: inline;
+} */

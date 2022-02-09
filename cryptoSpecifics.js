@@ -75,7 +75,7 @@ window.onload = function settingInitialValues() {
 
   xhr.send(data);
 };
-
+//creatingALineChartForSpecificCrypto();
 const data2 = null;
 var xhr2 = new XMLHttpRequest();
 xhr2.withCredentials = false;
@@ -105,9 +105,12 @@ function creatingALineChartForSpecificCrypto() {
       console.log(xValues);
 
       var getYValues = keyValues[0];
-      var yValues = getYValues.map(getPriceOfCryptoForChart);
+      var yValues = getYValues.map((item) => {return item[1];});
       console.log(yValues);
       //console.log(keyValues[0]);
+
+     // var yValues = getYValues.map(getPriceOfCryptoForChart);
+
 
       // console.log(keyValues[0][0].length);
       // for (var arrNum = 0; arrNum < keyValues[0].length; arrNum++) {
@@ -326,3 +329,5 @@ function getUnixTimeValue(item) {
 function getPriceOfCryptoForChart(item) {
   return item[1];
 }
+
+creatingALineChartForSpecificCrypto();
