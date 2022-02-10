@@ -1,3 +1,5 @@
+//var cryptoTickerSymbol;
+
 const data = null;
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = false;
@@ -31,18 +33,11 @@ window.onload = function settingInitialValues() {
       console.log(cnvrtToStringVal);
       cnvrtToStringVal = cnvrtToStringVal.toString();
 
-      if (firstParamValue == "ripple") {
-        document.getElementById("cryptoPicture").src = "/xrpPicture.png";
-        var cryptoTickerSymbol = "XRP:";
-      } else if (firstParamValue == "ethereum") {
-        document.getElementById("cryptoPicture").src = "/ethPicture.png";
-        var cryptoTickerSymbol = "ETH:";
-      } else {
-        document.getElementById("cryptoPicture").src =
-          "https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745";
-        var cryptoTickerSymbol = "MANA:";
+      if(firstParamValue == jsnCnvrtr[0]["id"])
+      {
+        document.getElementById("cryptoPicture").src = "/" + jsnCnvrtr[0]["symbol"] + "Picture.png";
       }
-      document.getElementById("cryptoNameBold").innerHTML = cryptoTickerSymbol;
+      document.getElementById("cryptoNameBold").innerHTML = jsnCnvrtr[0]["symbol"].toUpperCase() + ":";
 
       var withDollarSign = "$" + cnvrtToStringVal;
       document.getElementById("currentPriceOfSelectedCrypto").innerHTML =

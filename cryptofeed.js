@@ -310,19 +310,28 @@ function getFileInfo() {
   reader.readAsText(createdFile);
 };
 getFileInfo();
-function goToNewPage(nameOfCryptoSelected) {
+function goToNewPage(cryptoNumSelected) {
   // window.location.href = "http://127.0.0.1:5500/indexcrypto.html/cryptoSpecific.html"
   // var url1 = new URL('/page', "http://127.0.0.1:5500/indexcrypto.html");
   // console.log(url1);
   // window.location.href = url1
-  var url1 = new URL("http://127.0.0.1:5500/cryptoSpecific.html");
-  url1.searchParams.set("cryptoName", nameOfCryptoSelected);
-
-  for (var cryptoFinder = 0; cryptoFinder < keyNames.length; cryptoFinder++) {
-    if (keyNames[cryptoFinder] == nameOfCryptoSelected) {
-      url1.searchParams.set("cryptoAmt", keyValues[cryptoFinder]);
+  var cryptoSymbol = document.getElementById(cryptoNumSelected).innerHTML;
+  for(var cryptoSymbolNum = 0; cryptoSymbolNum < jsnCnvrtr.length; cryptoSymbolNum++)
+  {
+    if(jsnCnvrtr[cryptoSymbolNum]["symbol"].toUpperCase() == cryptoSymbol)
+    {
+      cryptoSymbol = jsnCnvrtr[cryptoSymbolNum]["id"];
+      var url1 = new URL("http://127.0.0.1:5500/cryptoSpecific.html");
+      url1.searchParams.set("cryptoName", cryptoSymbol);
+      break;
     }
   }
+
+//  for (var cryptoFinder = 0; cryptoFinder < jsnCnvrtr2.length; cryptoFinder++) {
+  //  if () {
+      url1.searchParams.set("cryptoAmt", jsnCnvrtr2[cryptoSymbol]);
+   // }
+ // }
 
   console.log(url1);
   // console.log(url1.href);
