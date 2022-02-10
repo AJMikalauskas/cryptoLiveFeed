@@ -13,6 +13,9 @@ var jsnCnvrtr2;
 // Key names and property values which are form the .txt file
 var keyNames;
 var keyValues;
+var imageOfCrypto;
+var storedKeys = [];
+var trackerOfChanges = 0;
 
 // xmlHTTPRequest variables
 var getRqstUrl =
@@ -50,18 +53,23 @@ function getCryptoPrice(arrWithObjElements) {
         cryptoSelected < keyNames.length;
         cryptoSelected++
       ) {
-        console.log(jsnCnvrtr[cryptoSelected]);
+        console.log(jsnCnvrtr[cryptoSelected]["symbol"]);
+
+        document.getElementById("imageOfCrypto" + cryptoSelected).src = jsnCnvrtr[cryptoSelected]["symbol"] + "Picture.png";
+
+        document.getElementById("cryptoName" + cryptoSelected).innerHTML = jsnCnvrtr[cryptoSelected]["symbol"].toUpperCase();
+
         var cnvrtToStringVal =
           +jsnCnvrtr[cryptoSelected]["current_price"].toString();
         //["ripple"/"decentraland"/"ethereum"]["usd"]
 
         var withDollarSign = "$" + cnvrtToStringVal;
         document.getElementById(
-          "currentPriceOf" + jsnCnvrtr[cryptoSelected]["id"]
+          "currentPriceOfcrypto" + cryptoSelected
         ).innerHTML = withDollarSign;
 
         document.getElementById(
-          "numberOf" + jsnCnvrtr[cryptoSelected]["id"]
+          "numberOfcrypto" + cryptoSelected
         ).innerHTML = arrWithObjElements[jsnCnvrtr[cryptoSelected]["id"]];
 
         var tokenToUsdConversion =
@@ -69,20 +77,47 @@ function getCryptoPrice(arrWithObjElements) {
           arrWithObjElements[jsnCnvrtr[cryptoSelected]["id"]] *
             cnvrtToStringVal;
         document.getElementById(
-          "total" + jsnCnvrtr[cryptoSelected]["id"] + "ToUsd"
+          "totalcrypto" + cryptoSelected + "ToUsd"
         ).innerHTML = tokenToUsdConversion;
       }
 
       /* Table DOM Manipulation*/
 
       for (var i = 0; i < keyNames.length; i++) {
+        // if(trackerOfChanges == 1)
+        // {
+        //   for(var storedKeyCount = 0; storedKeyCount < storedKeys.length; storedKeyCount++)
+        //   {
+        //     if(jsnCnvrtr[i]["id"] == storedKeys[storedKeyCount])
+        //     {
+        //       break;
+        //     }
+        //   }
+        // }
+        // else{
+        //   storedKeys.push(keyNames[i]);
+        //   console.log(storedKeys);
+        // }
         // //console.log(document.getElementById('adjustingTable').rows)
+
         var x = document.getElementById("adjustingTable").rows[i + 1].cells;
-        var imageOfCrypto = document.createElement("img");
+        //Resets the values of the first column which inclued the name, symbol, and picture because they're appeneded elements which makes them 
+          // not as easily reset as innerHTML is
+        if(trackerOfChanges >= 1)
+        {
+          for(var i2 = 0; i2 < 4; i2++)
+          {
+            x[i2].innerHTML = " ";
+          }
+        }
+        imageOfCrypto = document.createElement("img");
         imageOfCrypto.height = "60";
         imageOfCrypto.style.paddingRight = "15px";
         imageOfCrypto.style.marginBottom = "10px";
         imageOfCrypto.src = jsnCnvrtr[i]["symbol"] + "Picture.png";
+
+        console.log(imageOfCrypto.src)
+        console.log(imageOfCrypto.src.indexOf(jsnCnvrtr[i]["symbol"]))
         x[0].appendChild(imageOfCrypto);
 
         var symbolCapitalized = document.createElement("span");
@@ -94,7 +129,7 @@ function getCryptoPrice(arrWithObjElements) {
         var CrrntCrypto = document.createElement("span");
         CrrntCrypto.innerHTML = jsnCnvrtr[i]["name"];
         x[0].appendChild(CrrntCrypto);
-        console.log(keyNames[i]);
+       //x[0].innerHTML = imageOfCrypto;
         x[1].innerHTML = jsnCnvrtr[i]["current_price"].toLocaleString("en-US", {
           style: "currency",
           currency: "USD",
@@ -113,6 +148,8 @@ function getCryptoPrice(arrWithObjElements) {
         x[3].innerHTML = mktCap;
         //x[].innerHTML= "numbers";
       }
+      trackerOfChanges++;
+      console.log(trackerOfChanges);
     }
   });
 
@@ -120,8 +157,13 @@ function getCryptoPrice(arrWithObjElements) {
   // xhr.setRequestHeader("x-rapidapi-key", "93da5c882bmshca883f546251ac6p1f0c49jsn63020d879234");
   // xhr.setRequestHeader("x-rapidapi-host", "coingecko.p.rapidapi.com");
   //console.log(arrWithObjElements);
+  if(trackerOfChanges >= 1)
+  {
+    getRqstUrl = "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&ids=";
+  }
   keyNames = Object.keys(arrWithObjElements);
   console.log(keyNames);
+  keyNames.sort();
   for (var cryptoNum = 0; cryptoNum < keyNames.length; cryptoNum++) {
     if (cryptoNum < keyNames.length - 1) {
       getRqstUrl += keyNames[cryptoNum] + "%2C";
@@ -343,3 +385,12 @@ function searchForCryptos() {
 //   //);
 
 // }
+function changeFileData()
+{
+  //Test different amounts of the crypto, successful but with the appended elemnts in the table it made it harder
+    //stringExample = '{"decentraland": 100,"ripple": 100,"ethereum": 100}';
+
+  //Test Different Cryptos
+    stringExample = '{"terra-luna": 100,"ripple": 100,"ethereum": 100}';
+    getFileInfo();
+}
