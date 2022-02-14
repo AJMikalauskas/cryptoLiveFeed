@@ -1,0 +1,147 @@
+body
+{
+    background-color: #2C3333;
+}
+
+
+#crypto1, #crypto2, #crypto3 {
+
+    text-align: center;
+    background-color: #1A374D;
+    padding-bottom: 10px;
+    opacity: 90%;
+}
+
+#crypto1, #crypto2, #crypto3  span {
+    color: #F5F2E7;
+}
+
+#wrapperOfCarousel {
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: url("../img/technoBg2.jpg");
+    background-size: cover;
+}
+
+.carousel {
+    display: inline-block;
+    width: 700px;
+    padding: 3px;
+}
+.navbar {
+    text-align: center;
+    background-color: #395B64;
+}
+.centered-items {
+    /* text-align: center; */
+    align-content: center;
+    width: 500px;
+    height:auto;
+}
+
+#cryptoText 
+{
+    color: #AEFEFF;
+}
+
+.cryptoPicture
+{
+    margin-top: 10px;
+}
+
+#cursorPointer 
+{
+    cursor: pointer;
+}
+
+#tableHeader 
+{
+    text-align: center;
+    padding-bottom: 25px;
+    color: #AEFEFF;
+}
+
+#tableBelowMain 
+{
+    margin-top: 25px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 350px;
+  }
+  table tr th,
+  table tr td {
+    padding: 5px;
+  }
+  table tr th {
+    background: #eee;
+    text-align: left;
+  }
+  
+  table thead th:first-child {
+    border-top-left-radius: 10px;
+  }
+  
+
+  table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  
+  table tr:last-child td:first-child  {
+    border-bottom-left-radius: 10px;
+  }
+
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+
+
+  .nonHeadElements {
+    background-color: whitesmoke;
+  }
+
+  thead 
+  {
+      background-color: #AEFEFF;
+  }
+  #inputContainer
+{
+    width: 100%;
+    text-align:center;
+    padding-bottom: 25px;
+}
+#myInput
+{
+    display: inline;
+}
+#dropdownColor
+{
+    color: #AEFEFF;
+}
+
+.imgCss
+{
+    height: 60px;
+    margin: 0 15px 5px 0;
+}
+
+.symbolBold 
+{
+    font-weight: bold;
+}
+.padNameLeft
+{
+    padding-left: 15px;
+}
+#colorGreen
+{
+    color: green;
+}
+#colorRed
+{
+    color: red;
+}

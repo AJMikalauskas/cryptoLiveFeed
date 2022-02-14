@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Feed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- <input type="file" onchange="getFileInfo(event)" /> -->
+    <!-- <button id="read-button">Read File</button>
+    <div id="file-contents"></div> -->
+    <!-- <h1>This is our Crypto Portfolio</h1> -->
+    <nav class="navbar navbar-expand-lg" aria-label="Eighth navbar example">
+        <div class="container">
+            <a class="navbar-brand" href="#" id="cryptoText">Crypto Active Feed</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a> 
+               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li> 
+            -->
+               <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"  data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown07">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>  -->
+                </ul>
+                <ul class="navbar-nav me-5">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"  data-bs-toggle="dropdown" aria-expanded="false" id="dropdownColor">Dropdown</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown07">
+                      <li><a class="dropdown-item" onclick="changeFileData()">Dad's Account</a></li>
+                      <li><a class="dropdown-item" href="#">Jade's Account</a></li>
+                      <li><a class="dropdown-item" href="#">Xander's Account</a></li>
+                    </ul>
+                  </li> 
+                </ul>
+                <form>
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div id="wrapperOfCarousel">
+        <!-- Bootstrap version 5 Carousel -->
+        <!-- class="carousel slide" data-bs-ride="carousel" -->
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2500">
+                    <a id="cursorPointer" onclick="goToNewPage('ripple')">
+                        <div class="w-100" id="crypto1">
+                            <img id="imageOfCrypto0" src="" class="cryptoPicture" alt="XRP" height="80"
+                                style="margin-bottom: 10px;">
+                            <!-- <b>
+                            <p>Ripple current price:
+                        </b> -->
+                            <br>
+                            <b><span id="cryptoName0"> crypto 1 </span></b>
+                            <span id="currentPriceOfcrypto0">current price</span>
+                            <br>
+
+
+                            <b><span> Amount We Have:</span></b>
+                            <span id="numberOfcrypto0">number of crypto 1 we have</span>
+                            <br>
+
+                            <b><span>Total Money We Have In This Crypto:</span></b>
+                            <span id="totalcrypto0ToUsd">total usd we have in crypto 1</span>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <a id="cursorPointer" onclick="goToNewPage('decentraland')">
+                        <div id="crypto2">
+                            <img  id="imageOfCrypto1" src=""
+                                class="cryptoPicture" alt="decentraland" height="80" style="margin-bottom: 10px;">
+                            <!-- <b>
+                            <p>Decentraland current price:
+                        </b> -->
+
+                            <br>
+                            <b><span id="cryptoName1">crypto 2</span></b>
+                            <span id="currentPriceOfcrypto1">current price</span>
+                            <br>
+
+                            <b><span>Amount We Have:</span></b>
+                            <span id="numberOfcrypto1">number of crypto 2 we have</span>
+                            <br>
+
+                            <b><span>Total Money We Have In This Crypto:</span></b>
+                            <span id="totalcrypto1ToUsd">total usd we have in crypto 2</span>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <a id="cursorPointer" onclick="goToNewPage('ethereum')">
+                        <div id="crypto3">
+                            <img  id="imageOfCrypto2" src="" class="cryptoPicture" alt="ethereum" height="80"
+                                style="margin-bottom: 10px;">
+                            <!-- <b>
+                            <p>Ethereum current price:
+                        </b> -->
+                            <br>
+                            <b><span id="cryptoName2">crypto 3</span></b>
+                            <span id="currentPriceOfcrypto2">current price</span>
+                            <br>
+
+                            <b><span>Amount We Have:</span></b>
+                            <span id="numberOfcrypto2">number of crypto 3 we have</span>
+                            <br>
+
+                            <b><span>Total Money We Have In This Crypto:</span></b>
+                            <span id="totalcrypto2ToUsd">total usd we have in crypto 3</span>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button> -->
+        </div>
+    </div>
+    </div>
+    <div class="container" id="tableBelowMain">
+        <h1 id="tableHeader">Cryptos By Market Price </h1>
+        <!-- onkeyup="myFunction()" -->
+        <div id="inputContainer">
+            <input type="text" id="myInput" onkeyup="searchForCryptos()" placeholder="Search for cryptos..">
+        </div>
+        <table id="adjustingTable" class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">Coin</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">24h Change</th>
+                    <th scope="col">Market Cap</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="nonHeadElements">
+                    <td scope="row"></td>
+                    <td >Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr class="nonHeadElements">
+                    <td scope="row"></td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr class="nonHeadElements">
+                    <td scope="row" id="bottomLeft"></td>
+                    <td >Larry the Bird</td>
+                    <td>Big Boy</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <button onclick="adjustTable()">Adjust Table Btn</button> -->
+        <!-- <button id="newPage" onclick="goToNewPage()">New Page Link</button> -->
+        <!-- <a id="queryParamLink" href="/cryptoSpecific.html"> <button> Link to another page </button></a> -->
+
+        <!-- <pre id="unK"></pre> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+<script src="js/cryptofeed.js"></script>
+
+</html>

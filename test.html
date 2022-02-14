@@ -2,11 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js">
+    </script>
 </head>
 <body>
-    <h1>Testing Github Branches</h1>
+    <canvas id="myChart"></canvas>
+    <script>
+        function createChart() {
+          window.chartColors = {
+    red: "rgb(255, 99, 132)",
+    orange: "rgb(255, 159, 64)",
+    yellow: "rgb(255, 205, 86)",
+    green: "rgb(75, 192, 192)",
+    blue: "rgb(54, 162, 235)",
+    purple: "rgb(153, 102, 255)",
+    grey: "rgb(231,233,237)",
+  };
+
+  var config = {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          label: "Coin Price and Time Tracker",
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: yValues,
+          fill: false,
+          pointRadius: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      title: {
+        display: true,
+        text: "Chart.js Line Chart",
+      },
+      tooltips: {
+        mode: "index",
+        intersect: false,
+      },
+      hover: {
+        mode: "nearest",
+        intersect: true,
+      },
+      scales: {
+        xAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+            },
+          },
+        ],
+      },
+    },
+  };
+
+  var ctx = document.getElementById("canvas").getContext("2d");
+  var myLine = new Chart(ctx, config);
+        }
+
+  function getUnixTimeValue(item) {
+  var dateCnvrtr = new Date(item[0]);
+  console.log(dateCnvrtr);
+  var dateHours = dateCnvrtr.getHours();
+  var dateMin = dateCnvrtr.getMinutes();
+
+  if (dateCnvrtr.getHours() > 12) {
+     dateHours -= 12;
+  }
+  if (dateCnvrtr.getMinutes() < 10) {
+     dateMin = "0" + dateCnvrtr.getMinutes();
+  }
+  var dates = dateHours + ":" + dateMin;
+
+  return dates;
+}
+
+function getPriceOfCryptoForChart(item) {
+  return item[1];
+}
+creatingALineChartForSpecificCrypto();
+
+    </script>
 </body>
 </html>

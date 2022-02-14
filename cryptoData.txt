@@ -1,5 +1,0 @@
-{
-"decentraland": 35,
-"ripple": 50,
-"ethereum": 1
-}
